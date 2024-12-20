@@ -2,6 +2,20 @@
 
 1. Написать service, который будет раз в 30 секунд мониторить лог на предмет наличия ключевого слова (файл лога и ключевое слово должны задаваться в /etc/default).
 
+Создаём файл с конфигурацией для сервиса `/etc/default/watchlog`
+
+Создаём лог с ключевым словом `/var/log/watchlog.log`
+
+Создаём скрипт `/opt/watchlog.sh` и даём права на исполнение `chmod +x /opt/watchlog.sh`
+
+Создаём юнит для сервиса `/etc/systemd/system/watchlog.service`
+
+Создаём юнит для таймера `/etc/systemd/system/watchlog.timer`
+
+Стартуем таймер `systemctl start watchlog.timer`
+
+Проверяем `tail -n 1000 /var/log/syslog  | grep Master`
+
 ![Image alt](https://github.com/NikPuskov/SystemD/blob/main/watchlog.jpg)
 
 ![Image alt](https://github.com/NikPuskov/SystemD/blob/main/watchlog1.jpg)
@@ -16,6 +30,7 @@
 Создаём Юнит в `/etc/systemd/system/spawn-fcgi.service`
 
 Стартуем `systemctl start spawn-fcgi`
+
 Проверяем `systemctl status spawn-fcgi`
 
 ![Image alt](https://github.com/NikPuskov/SystemD/blob/main/spawn-fcgi.jpg)
