@@ -8,6 +8,16 @@
 
 2. Установить spawn-fcgi и создать unit-файл (spawn-fcgi.sevice)
 
+Предварительно устанавливаем spawn-fcgi `apt install spawn-fcgi php php-cgi php-cli \
+ apache2 libapache2-mod-fcgid -y`
+
+Создаём конфиг в `/etc/spawn-fcgi/fcgi.conf`
+
+Создаём Юнит в `/etc/systemd/system/spawn-fcgi.service`
+
+Стартуем `systemctl start spawn-fcgi`
+Проверяем `systemctl status spawn-fcgi`
+
 ![Image alt](https://github.com/NikPuskov/SystemD/blob/main/spawn-fcgi.jpg)
 
 3. Доработать unit-файл Nginx (nginx.service) для запуска нескольких инстансов сервера с разными конфигурационными файлами одновременно.
@@ -18,10 +28,10 @@ Cоздаём новый Unit для работы с шаблонами (/etc/sy
 
 Стартуем сервисы 
 
-systemctl start nginx@first
+`systemctl start nginx@first`
 
-systemctl start nginx@second
+`systemctl start nginx@second`
 
-Проверяем ss -tnulp | grep nginx
+Проверяем `ss -tnulp | grep nginx`
 
 ![Image alt](https://github.com/NikPuskov/SystemD/blob/main/nginx.jpg)
