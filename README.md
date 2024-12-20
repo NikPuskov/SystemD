@@ -27,7 +27,7 @@
 
 Создаём конфиг в `/etc/spawn-fcgi/fcgi.conf`
 
-Создаём Юнит в `/etc/systemd/system/spawn-fcgi.service`
+Создаём юнит в `/etc/systemd/system/spawn-fcgi.service`
 
 Стартуем `systemctl start spawn-fcgi`
 
